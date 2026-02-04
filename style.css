@@ -1,182 +1,223 @@
 /* --- RESET BÁSICO --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', Arial, sans-serif; }
-        
-        /* --- CORES E FUNDO (Estilo Dark/Streaming) --- */
-        body {
-            background-color: #141414; /* Preto meio cinza (Estilo Netflix) */
-            color: white;
-            overflow-x: hidden;
-        }
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* --- HEADER / LOGO --- */
-        header {
-            padding: 20px 4%;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 100;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
-            display: flex;
-            align-items: center;
-        }
+/* VARIÁVEIS DE COR (Baseadas na sua marca) */
+:root {
+    --cor-fundo: #0f1f14;    /* Verde bem escuro (quase preto) */
+    --cor-fundo-sec: #1a3322; /* Verde musgo escuro */
+    --cor-dourado: #cfa156;   /* Dourado da marca */
+    --cor-dourado-hover: #eac684; 
+    --cor-texto: #f0f0f0;     /* Branco suave */
+}
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #e50914; /* Vermelho destaque (pode trocar pela cor da sua marca) */
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-decoration: none;
-        }
+body {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-family: 'Lato', sans-serif; /* Fonte do corpo do texto */
+    overflow-x: hidden;
+}
 
-        /* --- HERO SECTION (O Destaque Principal) --- */
-        .hero {
-            height: 85vh; /* Ocupa 85% da altura da tela */
-            width: 100%;
-            background-image: url('src/photo-1476703993599-0035a21b17a9.png'); /* FOTO DE FUNDO DO DESTAQUE */
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            display: flex;
-            align-items: center;
-            padding: 0 4%;
-        }
+/* --- HEADER / LOGO --- */
+header {
+    padding: 15px 4%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    /* Gradiente suave verde escuro no topo */
+    background: linear-gradient(to bottom, rgba(15, 31, 20, 0.95) 0%, rgba(15, 31, 20, 0) 100%);
+    display: flex;
+    align-items: center;
+}
 
-        /* Sombra gradiente para o texto ficar legível sobre a imagem */
-        .hero-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to right, #141414 10%, rgba(20,20,20,0.6) 50%, rgba(20,20,20,0.1) 100%),
-                        linear-gradient(to top, #141414 0%, transparent 20%);
-        }
+.logo-img {
+    width: auto;
+    height: 150px; /* Tamanho da logo */
+    border-radius: 50%; /* Deixa redonda caso tenha fundo quadrado */
+    border: 2px solid var(--cor-dourado); /* Borda dourada na logo */
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
 
-        .hero-content {
-            position: relative;
-            z-index: 10;
-            max-width: 600px;
-        }
+/* --- HERO SECTION (Destaque) --- */
+.hero {
+    height: 90vh;
+    width: 100%;
+    /* Substitua pelo caminho correto da sua imagem de fundo */
+    background-image: url('src/photo-1476703993599-0035a21b17a9.png');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 4%;
+}
 
-        .hero-title {
-            font-size: 3.5rem;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            line-height: 1.1;
-        }
+/* O degradê agora vai para o Verde Escuro, não preto */
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to right, var(--cor-fundo) 15%, rgba(15, 31, 20, 0.7) 50%, rgba(15, 31, 20, 0.2) 100%),
+                linear-gradient(to top, var(--cor-fundo) 5%, transparent 30%);
+}
 
-        .hero-desc {
-            font-size: 1.2rem;
-            margin-bottom: 25px;
-            line-height: 1.5;
-            color: #ccc;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-        }
+.hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 600px;
+}
 
-        .btn-assistir {
-            padding: 12px 30px;
-            background-color: white;
-            color: black;
-            font-weight: bold;
-            font-size: 1.1rem;
-            border-radius: 4px;
-            text-decoration: none;
-            transition: 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
+.hero-title {
+    font-family: 'Playfair Display', serif; /* Fonte Clássica */
+    font-size: 4rem;
+    margin-bottom: 15px;
+    line-height: 1;
+    color: #ffffff;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+}
 
-        .btn-assistir:hover {
-            background-color: #ffcccc;
-            transform: scale(1.05);
-        }
+.hero-desc {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    line-height: 1.6;
+    color: #e0e0e0;
+    font-weight: 300;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+    border-left: 3px solid var(--cor-dourado); /* Detalhe elegante na esquerda */
+    padding-left: 15px;
+}
 
-        /* --- CARROSSEL DE OBRAS (Estilo Streaming) --- */
-        .catalog-section {
-            padding: 20px 4%;
-            margin-top: -50px; /* Sobe um pouco para ficar sobre o gradiente */
-            position: relative;
-            z-index: 20;
-        }
+.btn-assistir {
+    padding: 15px 35px;
+    background-color: var(--cor-dourado); /* Botão Dourado */
+    color: #0f1f14; /* Texto verde escuro para contraste */
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(207, 161, 86, 0.4);
+}
 
-        .section-title {
-            font-size: 1.2rem;
-            color: #e5e5e5;
-            margin-bottom: 15px;
-            font-weight: 500;
-        }
+.btn-assistir:hover {
+    background-color: var(--cor-dourado-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(207, 161, 86, 0.6);
+}
 
-        .carousel-container {
-            display: flex;
-            overflow-x: auto; /* Permite rolar para o lado */
-            gap: 15px;
-            padding-bottom: 20px;
-            scroll-behavior: smooth;
-        }
+/* --- CATALOGO --- */
+.catalog-section {
+    padding: 20px 4%;
+    margin-top: -80px;
+    position: relative;
+    z-index: 20;
+}
 
-        /* Esconde a barra de rolagem feia */
-        .carousel-container::-webkit-scrollbar {
-            height: 5px;
-        }
-        .carousel-container::-webkit-scrollbar-thumb {
-            background: #555;
-            border-radius: 10px;
-        }
-        .carousel-container::-webkit-scrollbar-track {
-            background: transparent;
-        }
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--cor-dourado); /* Título da seção em Dourado */
+    margin-bottom: 20px;
+    font-weight: 400;
+    font-style: italic;
+}
 
-        /* --- CARDS (Capas dos Livros) --- */
-        .card {
-            flex: 0 0 auto; /* Não deixa o card encolher */
-            width: 180px;   /* Largura do card */
-            height: 270px;  /* Altura do card (proporção capa de livro) */
-            border-radius: 4px;
-            overflow: hidden;
-            transition: transform 0.3s;
-            cursor: pointer;
-            position: relative;
-            background-color: #333;
-        }
+.carousel-container {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding-bottom: 30px;
+    scroll-behavior: smooth;
+}
 
-        .card:hover {
-            transform: scale(1.1); /* Efeito de crescer ao passar o mouse */
-            z-index: 30;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-        }
+/* Barra de rolagem personalizada (Dourada e Verde) */
+.carousel-container::-webkit-scrollbar { height: 8px; }
+.carousel-container::-webkit-scrollbar-thumb { background: var(--cor-dourado); border-radius: 10px; }
+.carousel-container::-webkit-scrollbar-track { background: #0a140d; }
 
-        .card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+/* --- CARDS --- */
+.card {
+    flex: 0 0 auto;
+    width: 200px;
+    height: 300px;
+    border-radius: 6px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    position: relative;
+    border: 1px solid #333;
+}
 
-        /* Estilo para cards "Em Breve" */
-        .card-soon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #222;
-            color: #555;
-            font-weight: bold;
-            border: 2px dashed #444;
-            text-align: center;
-            padding: 20px;
-        }
+.card:hover {
+    transform: scale(1.05);
+    z-index: 30;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+    border-color: var(--cor-dourado); /* Borda brilha dourado no hover */
+}
 
-        /* --- MOBILE --- */
-        @media (max-width: 768px) {
-            .hero-title { font-size: 2.5rem; }
-            .hero-desc { font-size: 1rem; }
-            .card { width: 140px; height: 210px; }
-        }
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
-        /* --- FOOTER --- */
-        footer {
-            padding: 50px 20px;
-            text-align: center;
-            font-size: 0.7rem;
-            color: #444; /* Cor escura para ficar bem sutil no fundo preto */
-            border-top: 1px solid #222;
-            margin-top: 40px;
-        }
-        footer p { margin-bottom: 4px; }
+/* Estilo Cards "Em Breve" */
+.card-soon {
+    background: linear-gradient(135deg, #1a3322 0%, #0f1f14 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #2a4a35;
+    text-align: center;
+    padding: 20px;
+}
+
+.soon-text {
+    color: var(--cor-dourado);
+    font-weight: bold;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.soon-category {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: #8fbc9f;
+}
+
+/* --- MOBILE --- */
+@media (max-width: 768px) {
+    .hero-title { font-size: 2.8rem; }
+    .hero-desc { font-size: 1rem; border-left: none; padding-left: 0; }
+    .card { width: 150px; height: 225px; }
+    .logo-img { height: 50px; }
+}
+
+/* --- FOOTER --- */
+footer {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #0a140d; /* Ainda mais escuro que o fundo */
+    border-top: 1px solid #1a3322;
+    margin-top: 50px;
+    color: #888;
+}
+
+.footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--cor-dourado);
+    margin-bottom: 20px;
+}
+
+.legal-info {
+    font-size: 0.75rem;
+    opacity: 0.6;
+    margin-top: 5px;
+}
